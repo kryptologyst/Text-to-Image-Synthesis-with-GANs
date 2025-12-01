@@ -1,0 +1,27 @@
+# @package model
+
+_target_: src.models.text_to_image_gan.TextToImageGAN
+
+# Model architecture
+z_dim: 100
+text_embedding_dim: 768
+img_channels: 3
+img_size: 64
+
+# Generator settings
+generator:
+  hidden_dims: [256, 512, 1024]
+  use_spectral_norm: true
+  dropout: 0.1
+
+# Discriminator settings
+discriminator:
+  hidden_dims: [1024, 512, 256]
+  use_spectral_norm: true
+  dropout: 0.1
+
+# Text encoder settings
+text_encoder:
+  model_name: "bert-base-uncased"
+  freeze_weights: true
+  pooling_strategy: "mean"  # mean, cls, max

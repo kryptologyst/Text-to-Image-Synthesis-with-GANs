@@ -1,0 +1,24 @@
+# @package evaluation
+
+# Evaluation metrics
+metrics:
+  fid:
+    _target_: torchmetrics.image.fid.FrechetInceptionDistance
+    feature: 2048
+    reset_real_features: true
+    normalize: true
+  
+  inception_score:
+    _target_: torchmetrics.image.inception.InceptionScore
+    normalize: true
+  
+  precision_recall:
+    _target_: torchmetrics.image.gan.GenerativeMetric
+    feature: 2048
+    normalize: true
+
+# Evaluation settings
+eval_batch_size: 32
+num_eval_samples: 1000
+save_samples: true
+sample_grid_size: 8
